@@ -48,9 +48,13 @@ hoursClock.forEach((angle) => {
  })
 
 // display hours 
-function displayHours(hr){
+function displayHours(hr,m){
+   
+    let angleMinute=m<60?(m/60):0
+   
     let angle=hr*30
-    hourEl.style.rotate=`${angle}deg`
+    hourEl.style.rotate=`${angle+Math.round(angleMinute*30)}deg`
+  
 }
 // display minutes 
 function displayMinutes(m){
@@ -70,9 +74,8 @@ function displaySeconds(s){
         let hr=currentTime.getHours()
         let m=currentTime.getMinutes()
         let s=currentTime.getSeconds()
-        displayHours(hr+1)
+        displayHours(hr+1,m)
         displayMinutes(m)
-        console.log(m);
         displaySeconds(s)
     },1000)
    
